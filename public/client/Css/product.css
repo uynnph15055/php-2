@@ -1,0 +1,152 @@
+/*  Content header */
+.content_header {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.position_page {
+    display: flex;
+    list-style-type: none;
+    justify-content: left;
+}
+
+.position_page li a {
+    text-decoration: none;
+    font-size: 17px;
+    color: var(--primary-color);
+}
+
+.sum__product-page {
+    margin-right: 20px;
+    color: var(--text-color);
+}
+
+.filter_product-bg {
+    display: flex;
+}
+
+.filter__product {
+    height: 30px;
+    margin-top: -5px;
+    font-size: 15px;
+}
+
+/* CONTENT LIST */
+.content_list {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    background-color: #eff0f3;
+    padding: 30px 81px;
+}
+
+.product_cate-title {
+    color: #444
+}
+
+.product__cate-list {
+    list-style-type: none;
+    padding-right: 50px;
+}
+
+.product__cate-item {
+    padding: 10px 0px;
+    border-bottom: 1px solid #ccc;
+}
+
+.product__cate-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.product__cate-link:hover {
+    color: var(--primary-color);
+}
+
+.product__all-list {
+    display: flex;
+    margin-left: -30px;
+    flex-wrap: wrap;
+    margin-right: 2px;
+}
+
+.product__all-list-item {
+    width: 21%;
+    margin-left: 36px;
+    margin-bottom: 20px;
+    background-color: #ffff;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.product__all-list-item:hover,
+.product__all-list-item:hover .btn__view {
+    box-shadow: 5px 2px 6px #666;
+    display: block;
+    transition: all ease-in-out 0.4s;
+    cursor: pointer;
+}
+
+.product__all-name a {
+    text-decoration: none;
+    color: #000;
+}
+
+.product__all-list-item img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.product__all-name {
+    font-size: 16px;
+}
+
+.btn__view {
+    position: absolute;
+    top: 150px;
+    left: 30px;
+    background-color: var(--primary-color);
+    padding: 5px 7px;
+    border-radius: 6px;
+    color: #ffff;
+    font-size: 14px;
+    display: none;
+    text-decoration: none;
+}
+
+.percent_sale {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    background-color: var(--primary-color);
+    padding: 12px 5px;
+    border-radius: 50px;
+    color: #ffff;
+    font-size: 14px;
+}
+
+.page__paging-list {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.page__paging-item {
+    padding-right: 20px;
+}
+
+.page__paging-list a {
+    text-decoration: none;
+    background-color: #ffff;
+    padding: 5px 10px;
+    border-radius: 50px;
+}
+
+.page__paging-list a:hover {
+    background-color: var(--primary-color);
+    color: #ffff;
+}

@@ -1,0 +1,175 @@
+.info_shop {
+    margin-top: 15px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 60% auto;
+    margin: 20px 100px;
+}
+
+.maketing_img-bg {
+    display: flex;
+    justify-content: left;
+    /* margin-top: 40px; */
+}
+
+.maketing_img {
+    width: 580px;
+}
+
+/* ---------------- */
+.wrap-bg {
+    background-color: #ff5622;
+    position: relative;
+    border-radius: 10px;
+    height: 560px;
+}
+
+.wrap_form-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wrap_form-end {
+    padding: 30px 30px;
+}
+
+.wrap_form-bg {
+    background-color: #ffff;
+    height: 90%;
+    width: 400px;
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    right: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgb(73, 67, 67);
+    display: none;
+}
+
+.status-login a {
+    text-decoration: none;
+    color: #080e66;
+}
+
+.wrap_form-status {
+    color: #0f0b0a;
+}
+
+.status-login {
+    /* margin-top: 10px; */
+}
+
+input[type=text] {
+    width: 100%;
+    height: 35px;
+    border-radius: 6px;
+    border: 1px solid rgb(185, 184, 184);
+    padding-left: 10px;
+}
+
+input[type=text]:focus {
+    outline-color: #ff5622;
+}
+
+.btn-bg a {
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 15px;
+    margin-right: 25px;
+    padding: 7px 10px;
+    border: 1px solid #aa072a;
+    color: #ff5622;
+}
+
+.btn-bg a:hover {
+    background-color: #ff5622;
+    color: #ffff;
+    transition: all ease-in-out 0.5s;
+}
+
+.btn_bg-login {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.btn-bg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn_bg-login a {
+    margin-top: 22px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: #000;
+    padding: 9px 20px;
+    border-radius: 6px;
+}
+
+.btn_bg-login a:hover {
+    background-color: #ccc;
+    transition: all ease-in-out 0.4s;
+}
+
+.btn-enter {
+    padding: 10px 25px;
+    margin-top: 20px;
+    background-color: #ff5622;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+.note {
+    text-align: center;
+    font-size: 15px;
+}
+
+input[type='file'] {
+    display: none;
+}
+
+.choose-imge {
+    padding: 7px 8px;
+    border: 1px solid #ff5622;
+    color: #ff5622;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.note a {
+    text-decoration: none;
+    color: #ff5622;
+}
+
+.note a:hover {
+    text-decoration: underline;
+}
+
+.input-bg {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Đăng nhập */
+.wrap_form-login {
+    background-color: #ffff;
+    height: 60%;
+    width: 400px;
+    position: absolute;
+    top: 18%;
+    left: 35px;
+    right: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgb(73, 67, 67);
+}
