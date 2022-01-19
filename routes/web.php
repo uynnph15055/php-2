@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\adminProduct;
 use App\Http\Controllers\client\Contact;
 use App\Http\Controllers\client\Home;
 use App\Http\Controllers\client\Introduce;
+use App\Http\Controllers\client\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,11 @@ Route::group(['prefix' => 'quan-tri'], function () {
     // Sản phẩm
     Route::group(['prefix' => '/san-pham'], function () {
         Route::get('/',  [adminProduct::class, 'index'])->name('san-pham.index');
+        Route::get('/trang-them',  [adminProduct::class, 'store'])->name('san-pham.pageAdd');
+        Route::post('/them',  [adminProduct::class, 'create'])->name('san-pham.them');
+        Route::get('/trang-sua/{id}',  [adminProduct::class, 'edit'])->name('san-pham.pageEdit');
+        Route::post('/sua',  [adminProduct::class, 'update'])->name('san-pham.update');
+        Route::get('/xoa/{id}',  [adminProduct::class, 'destroy'])->name('san-pham.destroy');
     });
 });
 
@@ -43,7 +49,9 @@ Route::group(
         Route::group(['prefix' => '/'], function () {
             Route::get('/', [Home::class, 'index'])->name('home');
             Route::get('/gioi-thieu', [Introduce::class, 'index'])->name('intro');
+            Route::get('/san-pham', [Product::class, 'index'])->name('product');
             Route::get('/lien-he', [Contact::class, 'index'])->name('contact');
+            Route::get('/loc-danh-muc', [Home::class, 'pagingCate'])->name('home.paging');
         });
     }
 );

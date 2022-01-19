@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('img');
             $table->string('size');
             $table->integer('quantity');
-            $table->float('price');
-            $table->float('priceSale');
+            $table->string('price');
+            $table->string('priceSale');
             $table->integer('status')->default(0);
             $table->unsignedInteger('cate_id');
             $table->text('description');

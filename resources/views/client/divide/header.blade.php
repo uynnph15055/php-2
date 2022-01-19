@@ -48,7 +48,7 @@
                 <a href="{{ route('intro') }}" class="header__main-list-link">Giới Thiệu</a>
             </li>
             <li class="header__main-list-item">
-                <a href="product.html" class="header__main-list-link menu__product-list">Sản phẩm <i class="fas fa-angle-down"></i></a>
+                <a href="{{ route('product') }}" class="header__main-list-link menu__product-list">Sản phẩm <i class="fas fa-angle-down"></i></a>
                 <ul class="menu__product-chird-list">
                     <li class="menu__product-chird-item"><a href="">
                             Giầy Nike

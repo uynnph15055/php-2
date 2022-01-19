@@ -49,108 +49,25 @@
                 <h2 class="content-title">Sản phẩm HOT</h2>
             </div>
             <div class="product__hot-list">
+                @foreach($productLotOfView as $key)
                 <div class="product__hot-list-item">
                     <div class="product__hot-list-detail">
                         <div class="product__hot-list-img-bag">
-                            <a href=""><img class="product__hot-list-detail-img" src="{{ asset('client/image/Giay-Puma-Full-Trang.jpg') }} " alt=""></a>
+                            <a href=""><img class="product__hot-list-detail-img" src="{{ asset('client/image/'.$key->img) }} " alt=""></a>
                         </div>
                         <div class="product__hot-list-infor">
                             <a href="" class="product__hot-list-infor-name">
-                                Giày Nike Jordan 1 Low White Metallic Gold
+                                {{$key->name}}
                             </a>
                             <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
+                                <bdo dir="ltr"> {{$key->price}}₫</bdo>
+                                <span>{{$key->priceSale}}₫</span>
                             </div>
                             <button class="product__hot-list-infor-btn">Chọn mẫu</button>
                         </div>
                     </div>
                 </div>
-                <div class="product__hot-list-item">
-                    <div class="product__hot-list-detail">
-                        <div class="product__hot-list-img-bag">
-                            <a href=""><img class="product__hot-list-detail-img" src="{{ asset('client/image/Giay-Puma-Full-Trang.jpg') }} " alt=""></a>
-                        </div>
-                        <div class="product__hot-list-infor">
-                            <a href="" class="product__hot-list-infor-name">
-                                Giày Nike Jordan 1 Low White Metallic Gold
-                            </a>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                            <button class="product__hot-list-infor-btn">Chọn mẫu</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="product__hot-list-item">
-                    <div class="product__hot-list-detail">
-                        <div class="product__hot-list-img-bag">
-                            <a href=""><img class="product__hot-list-detail-img" src="{{ asset('client/image/Giay-Puma-Full-Trang.jpg') }} " alt=""></a>
-                        </div>
-                        <div class="product__hot-list-infor">
-                            <a href="" class="product__hot-list-infor-name">
-                                Giày Nike Air Force 1 Low 07 Light Amory Blue
-                            </a>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                            <button class="product__hot-list-infor-btn">Chọn mẫu</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="product__hot-list-item">
-                    <div class="product__hot-list-detail">
-                        <div class="product__hot-list-img-bag">
-                            <a href=""><img class="product__hot-list-detail-img" src="{{ asset('client/image/Giay-Puma-Full-Trang.jpg') }} " alt=""></a>
-                        </div>
-                        <div class="product__hot-list-infor">
-                            <a href="" class="product__hot-list-infor-name">
-                                Giày Nike Jordan 1 Low White Metallic Gold
-                            </a>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                            <button class="product__hot-list-infor-btn">Chọn mẫu</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="product__hot-list-item">
-                    <div class="product__hot-list-detail">
-                        <div class="product__hot-list-img-bag">
-                            <a href=""><img class="product__hot-list-detail-img" src="{{ asset('client/image/Giay-Puma-Full-Trang.jpg') }} " alt=""></a>
-                        </div>
-                        <div class="product__hot-list-infor">
-                            <a href="" class="product__hot-list-infor-name">
-                                Giày Nike Jordan 1 Low White Metallic Gold
-                            </a>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                            <button class="product__hot-list-infor-btn">Chọn mẫu</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="product__hot-list-item">
-                    <div class="product__hot-list-detail">
-                        <div class="product__hot-list-img-bag">
-                            <a href=""><img class="product__hot-list-detail-img" src="{{ asset('client/image/Giay-Puma-Full-Trang.jpg') }} " alt=""></a>
-                        </div>
-                        <div class="product__hot-list-infor">
-                            <a href="" class="product__hot-list-infor-name">
-                                Giày Nike Air Force 1 Low 07 Light Amory Blue
-                            </a>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                            <button class="product__hot-list-infor-btn">Chọn mẫu</button>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </section>
         <section class="product__all-bg">
@@ -160,146 +77,27 @@
             <div class="product__all">
                 <div class="product__all-cate">
                     <ul class="product__all-cate-list">
-                        <li class="product__all-cate-item">
-                            <a href="" class="product__all-cate-item-link">Giày Nike</a>
+                        @foreach($productCate as $key)
+                        <li data-id="{{$key->id}}" class="product__all-cate-item">
+                            <a href="" class="product__all-cate-item-link">{{$key->name}}</a>
                         </li>
-                        <li class="product__all-cate-item">
-                            <a href="" class="product__all-cate-item-link">Giày MLK</a>
-                        </li>
-                        <li class="product__all-cate-item">
-                            <a href="" class="product__all-cate-item-link">Giày Nike</a>
-                        </li>
-                        <li class="product__all-cate-item">
-                            <a href="" class="product__all-cate-item-link">Giày Nike</a>
-                        </li>
-                        <li class="product__all-cate-item">
-                            <a href="" class="product__all-cate-item-link">Giày Nike</a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="product__all-list-bg">
                     <div class="product__all-list">
+                        @foreach($productAll as $key)
                         <div class="product__all-list-item">
-                            <img class="" src="{{ asset('client/image/Giay-Nike-Air-Force-1-Low-07-Light-Amory-Blue-1536x1536.jpg') }} " alt="">
+                            <img class="" style="margin-bottom: 10px;" src="{{ asset('client/image/'.$key->img) }} " alt="">
                             <a href="" class="btn__view">Chọn mẫu</a>
                             <span class="percent_sale">-20%</span>
-                            <span class="product__all-name"><a href="">Giày Nike Jordan 1 Mid Peach
-                                    Mocha</a></span>
+                            <span class="product__all-name"><a href="">{{$key->name}}</a></span>
                             <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
+                                <bdo dir="ltr"><?= number_format("$key->price", 0, ",", "."); ?>₫</bdo>
+                                <span><?= number_format("$key->priceSale", 0, ",", ".") ?>₫</span>
                             </div>
                         </div>
-                        <div class="product__all-list-item">
-                            <img class="" src="{{ asset('client/image/Adidas-Ultraboost-Hong-1536x1536.jpg') }} " alt="">
-                            <a href="" class="btn__view">Chọn mẫu</a>
-                            <span class="percent_sale">-20%</span>
-                            <span class="product__all-name"><a href="">Giày Nike Jordan 1 Mid Peach
-                                    Mocha</a></span>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                        </div>
-                        <div class="product__all-list-item">
-                            <img class="" src="{{ asset('client/image/Giày-sneaker-nike-air-force-trắng-đế-xanh.jpg') }} " alt="">
-                            <a href="" class="btn__view">Chọn mẫu</a>
-                            <span class="percent_sale">-20%</span>
-                            <span class="product__all-name"><a href="">Giày Nike Jordan 1 Mid Peach
-                                    Mocha</a></span>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                        </div>
-                        <div class="product__all-list-item">
-                            <img class="" src="{{ asset('client/image/Giay-Nike-Air-Force-1-Low-07-Light-Amory-Blue-1536x1536.jpg') }} " alt="">
-                            <a href="" class="btn__view">Chọn mẫu</a>
-                            <span class="percent_sale">-20%</span>
-                            <span class="product__all-name"><a href="">Giày Nike Jordan 1 Mid Peach
-                                    Mocha</a></span>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                        </div>
-                        <div class="product__all-list-item">
-                            <img class="" src="{{ asset('client/image/Giay-Nike-Air-Force-1-Low-07-Light-Amory-Blue-1536x1536.jpg') }} " alt="">
-                            <a href="" class="btn__view">Chọn mẫu</a>
-                            <span class="percent_sale">-20%</span>
-                            <span class="product__all-name"><a href="">Giày Nike Jordan 1 Mid Peach
-                                    Mocha</a></span>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                        </div>
-                        <div class="product__all-list-item">
-                            <img class="" src="{{ asset('client/image/Giay-Nike-Air-Force-1-Low-07-Light-Amory-Blue-1536x1536.jpg') }} " alt="">
-                            <a href="" class="btn__view">Chọn mẫu</a>
-                            <span class="percent_sale">-20%</span>
-                            <span class="product__all-name"><a href="">Giày Nike Jordan 1 Mid Peach
-                                    Mocha</a></span>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                        </div>
-                        <div class="product__all-list-item">
-                            <img class="" src="{{ asset('client/image/Giay-Nike-Air-Force-1-Low-07-Light-Amory-Blue-1536x1536.jpg') }} " alt="">
-                            <a href="" class="btn__view">Chọn mẫu</a>
-                            <span class="percent_sale">-20%</span>
-                            <span class="product__all-name"><a href="">Giày Nike Jordan 1 Mid Peach
-                                    Mocha</a></span>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                        </div>
-                        <div class="product__all-list-item">
-                            <img class="" src="{{ asset('client/image/Giay-Nike-Air-Force-1-Low-07-Light-Amory-Blue-1536x1536.jpg') }} " alt="">
-                            <a href="" class="btn__view">Chọn mẫu</a>
-                            <span class="percent_sale">-20%</span>
-                            <span class="product__all-name"><a href="">Giày Nike Jordan 1 Mid Peach
-                                    Mocha</a></span>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                        </div>
-                        <div class="product__all-list-item">
-                            <img class="" src="{{ asset('client/image/Giay-Nike-Air-Force-1-Low-07-Light-Amory-Blue-1536x1536.jpg') }} " alt="">
-                            <a href="" class="btn__view">Chọn mẫu</a>
-                            <span class="percent_sale">-20%</span>
-                            <span class="product__all-name"><a href="">Giày Nike Jordan 1 Mid Peach
-                                    Mocha</a></span>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                        </div>
-                        <div class="product__all-list-item">
-                            <img class="" src="{{ asset('client/image/Giay-Nike-Air-Force-1-Low-07-Light-Amory-Blue-1536x1536.jpg') }} " alt="">
-                            <a href="" class="btn__view">Chọn mẫu</a>
-                            <span class="percent_sale">-20%</span>
-                            <span class="product__all-name"><a href="">Giày Nike Jordan 1 Mid Peach
-                                    Mocha</a></span>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                        </div>
-                        <div class="product__all-list-item">
-                            <img class="" src="{{ asset('client/image/Giay-Nike-Air-Force-1-Low-07-Light-Amory-Blue-1536x1536.jpg') }} " alt="">
-                            <a href="" class="btn__view">Chọn mẫu</a>
-                            <span class="percent_sale">-20%</span>
-                            <span class="product__all-name"><a href="">Giày Nike Jordan 1 Mid Peach
-                                    Mocha</a></span>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr">850.000₫</bdo>
-                                <span>550.000₫</span>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <a href="" class="read__more-product">Xem tất cả sản phẩm</a>
@@ -401,4 +199,18 @@
         </section>
     </main>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.product__all-cate-item').click(function(e) {
+            e.preventDefault();
+            var cate = $(this).data('id');
+            $.get("<?= route('home.paging') ?>", {
+                cate_id: cate
+            }, function($data) {
+                $('.product__all-list').html($data);
+            })
+        })
+    });
+</script>
 @endsection

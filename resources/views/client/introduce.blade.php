@@ -140,132 +140,20 @@
             </ul>
             <h4 class="slider__bar-title">Sản phẩm mới nhất</h4>
             <ul class="product__relate-list">
+                @foreach($productAll as $key)
                 <li class="product__relate-item">
                     <div class="product__relate-img-bg">
-                        <a href=""><img class="product__relate-img" src="{{ asset('client/image/Adidas-Ultraboost-Hong-1536x1536.jpg') }}" alt=""></a>
+                        <a href=""><img class="product__relate-img" src="{{ asset('client/image/'.$key->img) }}" alt=""></a>
                     </div>
                     <div class="product__relate-infor-bg">
-                        <span class="product__relate-name"><a class="product__relate-name-a" href="">Giày Nike
-                                Air Force 1 Low (Đặc
-                                biệt)</a></span>
+                        <span class="product__relate-name"><a class="product__relate-name-a" href="">{{$key->name}}</a></span>
                         <div class="product__hot-list-infor-price">
-                            <bdo dir="ltr">850.000₫</bdo>
-                            <span>550.000₫</span>
+                            <bdo dir="ltr"><?= number_format("$key->price", 0, ",", "."); ?>₫</bdo>
+                            <span><?= number_format("$key->priceSale", 0, ",", "."); ?>₫</span>
                         </div>
                     </div>
                 </li>
-                <li class="product__relate-item">
-                    <div class="product__relate-img-bg">
-                        <a href=""><img class="product__relate-img" src="{{ asset('client/image/Adidas-Ultraboost-Hong-1536x1536.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="product__relate-infor-bg">
-                        <span class="product__relate-name"><a class="product__relate-name-a" href="">Giày Nike
-                                Air Force 1 Low (Đặc
-                                biệt)</a></span>
-                        <div class="product__hot-list-infor-price">
-                            <bdo dir="ltr">850.000₫</bdo>
-                            <span>550.000₫</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="product__relate-item">
-                    <div class="product__relate-img-bg">
-                        <a href=""><img class="product__relate-img" src="{{ asset('client/image/Adidas-Ultraboost-Hong-1536x1536.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="product__relate-infor-bg">
-                        <span class="product__relate-name"><a class="product__relate-name-a" href="">Giày Nike
-                                Air Force 1 Low (Đặc
-                                biệt)</a></span>
-                        <div class="product__hot-list-infor-price">
-                            <bdo dir="ltr">850.000₫</bdo>
-                            <span>550.000₫</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="product__relate-item">
-                    <div class="product__relate-img-bg">
-                        <a href=""><img class="product__relate-img" src="{{ asset('client/image/Adidas-Ultraboost-Hong-1536x1536.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="product__relate-infor-bg">
-                        <span class="product__relate-name"><a class="product__relate-name-a" href="">Giày Nike
-                                Air Force 1 Low (Đặc
-                                biệt)</a></span>
-                        <div class="product__hot-list-infor-price">
-                            <bdo dir="ltr">850.000₫</bdo>
-                            <span>550.000₫</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="product__relate-item">
-                    <div class="product__relate-img-bg">
-                        <a href=""><img class="product__relate-img" src="{{ asset('client/image/Adidas-Ultraboost-Hong-1536x1536.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="product__relate-infor-bg">
-                        <span class="product__relate-name"><a class="product__relate-name-a" href="">Giày Nike
-                                Air Force 1 Low (Đặc
-                                biệt)</a></span>
-                        <div class="product__hot-list-infor-price">
-                            <bdo dir="ltr">850.000₫</bdo>
-                            <span>550.000₫</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="product__relate-item">
-                    <div class="product__relate-img-bg">
-                        <a href=""><img class="product__relate-img" src="{{ asset('client/image/Adidas-Ultraboost-Hong-1536x1536.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="product__relate-infor-bg">
-                        <span class="product__relate-name"><a class="product__relate-name-a" href="">Giày Nike
-                                Air Force 1 Low (Đặc
-                                biệt)</a></span>
-                        <div class="product__hot-list-infor-price">
-                            <bdo dir="ltr">850.000₫</bdo>
-                            <span>550.000₫</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="product__relate-item">
-                    <div class="product__relate-img-bg">
-                        <a href=""><img class="product__relate-img" src="{{ asset('client/image/Adidas-Ultraboost-Hong-1536x1536.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="product__relate-infor-bg">
-                        <span class="product__relate-name"><a class="product__relate-name-a" href="">Giày Nike
-                                Air Force 1 Low (Đặc
-                                biệt)</a></span>
-                        <div class="product__hot-list-infor-price">
-                            <bdo dir="ltr">850.000₫</bdo>
-                            <span>550.000₫</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="product__relate-item">
-                    <div class="product__relate-img-bg">
-                        <a href=""><img class="product__relate-img" src="{{ asset('client/image/Adidas-Ultraboost-Hong-1536x1536.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="product__relate-infor-bg">
-                        <span class="product__relate-name"><a class="product__relate-name-a" href="">Giày Nike
-                                Air Force 1 Low (Đặc
-                                biệt)</a></span>
-                        <div class="product__hot-list-infor-price">
-                            <bdo dir="ltr">850.000₫</bdo>
-                            <span>550.000₫</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="product__relate-item">
-                    <div class="product__relate-img-bg">
-                        <a href=""><img class="product__relate-img" src="{{ asset('client/image/Adidas-Ultraboost-Hong-1536x1536.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="product__relate-infor-bg">
-                        <span class="product__relate-name"><a class="product__relate-name-a" href="">Giày Nike
-                                Air Force 1 Low (Đặc
-                                biệt)</a></span>
-                        <div class="product__hot-list-infor-price">
-                            <bdo dir="ltr">850.000₫</bdo>
-                            <span>550.000₫</span>
-                        </div>
-                    </div>
-                </li>
+                @endforeach
             </ul>
         </div>
 

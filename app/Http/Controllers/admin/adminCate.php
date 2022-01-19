@@ -10,17 +10,18 @@ class adminCate extends Controller
 {
     public function index()
     {
+        // return '<h1>Uy</h1>';
+        $dataLimit = Category::paginate(5);
         $dataAll = Category::all();
-        $dataCateLimit = Category::orderBy('id', 'asc')->skip(0)->take(5)->get();
 
-        $dataCateLimitDisplay = $this->Hierarchical($dataCateLimit, 0, 0);
+        $dataCateLimitDisplay = $this->Hierarchical($dataLimit, 0, 0);
+
         $dataCateAllDisplay = $this->Hierarchical($dataAll, 0, 0);
-        $page = ceil(count($dataAll) / 5);
 
         return view('admin.adminCate.adminCate', [
             'dataCate' => $dataCateLimitDisplay,
             'dataParent' => $dataCateAllDisplay,
-            'page' => $page,
+            'dataLimit' => $dataLimit,
         ]);
     }
 
