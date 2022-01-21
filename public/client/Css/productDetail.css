@@ -24,7 +24,6 @@
 
 .product__img {
     width: 100%;
-    height: 100%;
     transform: scale(1.0);
     transition: all ease-in-out 0.3s;
 }
@@ -259,7 +258,6 @@
 }
 
 div.stars {
-    width: 100;
     text-align: center;
     margin: auto;
 }
@@ -357,7 +355,7 @@ textarea:focus {
 
 .images img {
     width: 100%;
-    height: 60px;
+    height: 75px;
     cursor: pointer;
     transition: 0.3s all ease;
     border-radius: 6px;
@@ -390,8 +388,10 @@ textarea:focus {
 }
 
 .modalImg {
+    margin-top: 50px;
     width: 80%;
-    max-width: 700px;
+    max-width: 500px;
+    border-radius: 20px;
 }
 
 .modalTxt {
@@ -429,7 +429,7 @@ textarea:focus {
 /* ---------------- */
 
 .product__footer-item:hover {
-    box-shadow: 0 0 20px #c4c4c4;
+    box-shadow: 0 0 20px #616060;
     transition: all ease-in-out 0.3s;
     cursor: pointer;
 }

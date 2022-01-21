@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class judge extends Model
 {
     use HasFactory;
+    protected $table = 'judges';
+    protected $fillable = ['product_id', 'customer_id', 'number_star', 'content'];
 }

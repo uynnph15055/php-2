@@ -13,10 +13,10 @@
         </ul>
         <div class="filter_product-bg">
             <p class="sum__product-page">Showing 1–40 of 114 results</p>
-            <select class="filter__product" name="" id="">
-                <option value="">Mới nhất</option>
-                <option value="">Theo giá : từ cao đến thấp</option>
-                <option value="">Theo giá : từ thấp đến cao</option>
+            <select class="filter__product" name="" id="select-filter">
+                <option value="1">Mới nhất</option>
+                <option value="2">Theo giá : từ cao đến thấp</option>
+                <option value="3">Theo giá : từ thấp đến cao</option>
             </select>
         </div>
     </div>
@@ -24,11 +24,9 @@
         <div class="product_cate-bg">
             <h4 class="product_cate-title">Danh mục sản phẩm</h4>
             <ul class="product__cate-list">
-                <li class="product__cate-item"><a href="" class="product__cate-link">Dr Martens</a></li>
-                <li class="product__cate-item"><a href="" class="product__cate-link">Dr Martens</a></li>
-                <li class="product__cate-item"><a href="" class="product__cate-link">Dr Martens</a></li>
-                <li class="product__cate-item"><a href="" class="product__cate-link">Dr Martens</a></li>
-                <li class="product__cate-item"><a href="" class="product__cate-link">Dr Martens</a></li>
+                @foreach($category as $key)
+                <li data-id="{{ $key->id }}" class="product__cate-item"><a href="" class="product__cate-link">{{ $key->name}}</a></li>
+                @endforeach
             </ul>
         </div>
         <div class="product__all-list-bg">
@@ -55,4 +53,28 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.product__cate-item').click(function(e) {
+            e.preventDefault();
+            var cate = $(this).data('id');
+            // alert(cate);
+            $.get("<?= route('product.paging') ?>", {
+                cate_id: cate
+            }, function($data) {
+                $('.product__all-list').html($data);
+            })
+        })
+        $('#select-filter').on('change', function() {
+            filter_id = $('#select-filter').val();
+            $.get("<?= route('product.filter') ?>", {
+                filter_id: filter_id
+            }, function($data) {
+                $('.product__all-list').html($data);
+            })
+        })
+    });
+    // $(document).ready(function() {})
+</script>
 @endsection

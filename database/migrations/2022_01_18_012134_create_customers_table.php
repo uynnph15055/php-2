@@ -18,7 +18,7 @@ class CreateCustomersTable extends Migration
             $table->string('name', 100);
             $table->string('img', 50);
             $table->string('email')->unique();
-            $table->string('password', 50);
+            $table->string('password', 200);
             $table->string('address', 100);
             $table->string('phone', 20);
             $table->timestamps();

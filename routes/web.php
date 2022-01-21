@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\admin\adminCate;
+use App\Http\Controllers\admin\adminMain;
 use App\Http\Controllers\admin\adminProduct;
 use App\Http\Controllers\client\Contact;
+use App\Http\Controllers\client\Form;
 use App\Http\Controllers\client\Home;
 use App\Http\Controllers\client\Introduce;
 use App\Http\Controllers\client\Product;
@@ -38,6 +40,9 @@ Route::group(['prefix' => 'quan-tri'], function () {
         Route::post('/sua',  [adminProduct::class, 'update'])->name('san-pham.update');
         Route::get('/xoa/{id}',  [adminProduct::class, 'destroy'])->name('san-pham.destroy');
     });
+    Route::group(['prefix' => '/'], function () {
+        Route::get('/', [adminMain::class, 'index'])->name('trang-chinh.index');
+    });
 });
 
 
@@ -49,9 +54,27 @@ Route::group(
         Route::group(['prefix' => '/'], function () {
             Route::get('/', [Home::class, 'index'])->name('home');
             Route::get('/gioi-thieu', [Introduce::class, 'index'])->name('intro');
-            Route::get('/san-pham', [Product::class, 'index'])->name('product');
             Route::get('/lien-he', [Contact::class, 'index'])->name('contact');
             Route::get('/loc-danh-muc', [Home::class, 'pagingCate'])->name('home.paging');
+            Route::get('/dang-ky-dang-nhap', [Form::class, 'index'])->name('formRegister');
+            Route::post('/dang-nhap', [Form::class, 'login'])->name('login');
+            Route::get('/dang-xuat', [Form::class, 'logOut'])->name('logOut');
+        });
+
+        // Đăng ký
+        Route::group(['prefix' =>  '/dang-ky'], function () {
+            Route::post('/', [Form::class, 'register'])->name('register');
+            Route::get('/xac-nhan', [Form::class, 'pageConfirm'])->name('register.pageConfirm');
+            Route::post('/kiem-tra-xac-nhan', [Form::class, 'confirm'])->name('register.confirm');
+        });
+
+        // Trang sản phẩm
+        Route::group(['prefix' => '/san-pham'], function () {
+            Route::get('/', [Product::class, 'index'])->name('product');
+            Route::get('/loc-danh-muc', [Product::class, 'pagingCate'])->name('product.paging');
+            Route::get('/loc-gia', [Product::class, 'pagingFilter'])->name('product.filter');
+            Route::get('/{slug}', [Product::class, 'productDetail'])->name('product.detail');
+            Route::post('/luu-danh-gia', [Product::class, 'saveAssess'])->name('product.saveAssess');
         });
     }
 );

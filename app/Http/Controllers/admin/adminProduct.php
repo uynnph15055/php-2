@@ -108,6 +108,7 @@ class adminProduct extends Controller
     public function edit($id)
     {
         $rowProducts = Product::find($id);
+        // dd($rowProducts);
 
         $arraySize = explode('|', $rowProducts->size);
         // dd($arraySize);

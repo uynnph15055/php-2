@@ -64,5 +64,17 @@
                 <a href="{{ route('contact') }}" class="header__main-list-link">Liên Hệ</a>
             </li>
         </ul>
+        @if(session()->exists('user_info'))
+        <ul class="info-user">
+            <li><a href=""> <img class="img_user" src="{{ asset('upload/'.session('user_info')->img) }}" alt=""></a></li>
+            <li><a href="">{{session('user_info')->name}}</a></li>
+            <li><a href="{{ route('logOut') }}">| Đăng xuất</a></li>
+        </ul>
+        @else
+        <ul class="info-user">
+            <li><a href="{{ route('formRegister') }}">Đăng nhập</a></li>
+            <li><a href="{{ route('formRegister') }}">| Đăng ký</a></li>
+        </ul>
+        @endif
     </div>
 </header>

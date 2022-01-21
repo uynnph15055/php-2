@@ -51,21 +51,23 @@
             <div class="product__hot-list">
                 @foreach($productLotOfView as $key)
                 <div class="product__hot-list-item">
-                    <div class="product__hot-list-detail">
-                        <div class="product__hot-list-img-bag">
-                            <a href=""><img class="product__hot-list-detail-img" src="{{ asset('client/image/'.$key->img) }} " alt=""></a>
-                        </div>
-                        <div class="product__hot-list-infor">
-                            <a href="" class="product__hot-list-infor-name">
-                                {{$key->name}}
-                            </a>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr"> {{$key->price}}₫</bdo>
-                                <span>{{$key->priceSale}}₫</span>
+                    <a href="{{ route('product.detail' , ['slug' => $key->slug]) }}">
+                        <div class="product__hot-list-detail">
+                            <div class="product__hot-list-img-bag">
+                                <a href="{{ route('product.detail' , ['slug' => $key->slug]) }}"><img class="product__hot-list-detail-img" src="{{ asset('upload/'.$key->img) }} " alt=""></a>
                             </div>
-                            <button class="product__hot-list-infor-btn">Chọn mẫu</button>
+                            <div class="product__hot-list-infor">
+                                <a href="" class="product__hot-list-infor-name">
+                                    {{$key->name}}
+                                </a>
+                                <div class="product__hot-list-infor-price">
+                                    <bdo dir="ltr"> {{$key->price}}₫</bdo>
+                                    <span>{{$key->priceSale}}₫</span>
+                                </div>
+                                <button class="product__hot-list-infor-btn">Chọn mẫu</button>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 @endforeach
             </div>
@@ -88,7 +90,7 @@
                     <div class="product__all-list">
                         @foreach($productAll as $key)
                         <div class="product__all-list-item">
-                            <img class="" style="margin-bottom: 10px;" src="{{ asset('client/image/'.$key->img) }} " alt="">
+                            <img class="" style="margin-bottom: 10px;" src="{{ asset('upload/'.$key->img) }} " alt="">
                             <a href="" class="btn__view">Chọn mẫu</a>
                             <span class="percent_sale">-20%</span>
                             <span class="product__all-name"><a href="">{{$key->name}}</a></span>
@@ -212,5 +214,6 @@
             })
         })
     });
+
 </script>
 @endsection

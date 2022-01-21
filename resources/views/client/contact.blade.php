@@ -1,4 +1,3 @@
-<!-- Content -->
 @extends('client.layout.client');
 @section('title' , 'Liên hệ')
 @section('linkCss');
