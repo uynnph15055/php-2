@@ -438,3 +438,22 @@ textarea:focus {
     margin: 0px 6px;
     transition: all ease-in-out 0.3s;
 }
+
+.warning-login {
+    text-align: center;
+    /* margin-top: 10px; */
+    color: #555;
+}
+
+.warning-login i {
+    font-size: 70px;
+    margin-bottom: 20px;
+}
+
+.warning-login a {
+    color: #ff5622;
+}
+
+.warning-login a:hover {
+    text-decoration: underline;
+}

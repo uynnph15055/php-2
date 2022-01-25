@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\admin\adminAssess;
 use App\Http\Controllers\admin\adminCate;
 use App\Http\Controllers\admin\adminMain;
 use App\Http\Controllers\admin\adminProduct;
+use App\Http\Controllers\client\Cart;
 use App\Http\Controllers\client\Contact;
 use App\Http\Controllers\client\Form;
 use App\Http\Controllers\client\Home;
 use App\Http\Controllers\client\Introduce;
+use App\Http\Controllers\client\Pay;
 use App\Http\Controllers\client\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -40,8 +43,16 @@ Route::group(['prefix' => 'quan-tri'], function () {
         Route::post('/sua',  [adminProduct::class, 'update'])->name('san-pham.update');
         Route::get('/xoa/{id}',  [adminProduct::class, 'destroy'])->name('san-pham.destroy');
     });
+    // Trang chính
     Route::group(['prefix' => '/'], function () {
         Route::get('/', [adminMain::class, 'index'])->name('trang-chinh.index');
+    });
+
+    // Đánh giá của khách hàng
+    Route::group(['prefix' => '/danh-gia'], function () {
+        Route::get('/', [adminAssess::class, 'index'])->name('danh-gia.index');
+        Route::post('/sua-danh-gia', [adminAssess::class, 'update'])->name('danh-gia.update');
+        Route::get('/xoa/{id}', [adminAssess::class, 'destroy'])->name('danh-gia.delete');
     });
 });
 
@@ -75,6 +86,15 @@ Route::group(
             Route::get('/loc-gia', [Product::class, 'pagingFilter'])->name('product.filter');
             Route::get('/{slug}', [Product::class, 'productDetail'])->name('product.detail');
             Route::post('/luu-danh-gia', [Product::class, 'saveAssess'])->name('product.saveAssess');
+        });
+        Route::group(['prefix' => '/gio-hang'], function () {
+            Route::get('/', [Cart::class, 'index'])->name('cart');
+            Route::post('/them', [Cart::class, 'addCart'])->name('addCart');
+            Route::get('/xoa-gio-hang/{id}', [Cart::class, 'deleteCart'])->name('deleteCart');
+        });
+        Route::group(['prefix' => '/thanh-toan'], function () {
+            Route::get('/', [Pay::class, 'index'])->name('pagePay');
+            Route::post('/luu-hoa-don', [Pay::class, 'storeBill'])->name('storeBill');
         });
     }
 );

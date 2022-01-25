@@ -38,7 +38,7 @@ class Product extends Controller
             $priceSale = number_format($key->priceSale, 0, ",", ".");
             $img = asset('client/image/' . $key->img);
             echo "
-            <div class='product__all-list-item'>
+            <a href='{{ route('product.detail' , ['slug' => $key->slug]) }}'><div class='product__all-list-item'>
             <img class=' style='margin-bottom: 10px;' src='" . $img . "' alt=''>
             <a href='' class='btn__view'>Chọn mẫu</a>
             <span class='percent_sale'>-20%</span>
@@ -47,7 +47,7 @@ class Product extends Controller
                 <bdo dir='ltr'>" . $price . " ₫</bdo>
                 <span>" . $priceSale . "₫</span>
             </div>
-        </div>
+        </div></a>
             ";
         }
     }

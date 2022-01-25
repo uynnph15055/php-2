@@ -32,16 +32,18 @@
         <div class="product__all-list-bg">
             <div class="product__all-list">
                 @foreach($productAll as $key)
-                <div class="product__all-list-item">
-                    <img class="" src=" {{ asset('client/image/'.$key->img) }}" alt="">
-                    <a href="" class="btn__view">Chọn mẫu</a>
-                    <span class="percent_sale">-20%</span>
-                    <span class="product__all-name"><a href="">{{$key->name}}</a></span>
-                    <div class="product__hot-list-infor-price">
-                        <bdo dir="ltr"><?= number_format("$key->price", 0, ",", "."); ?>₫</bdo>
-                        <span><?= number_format("$key->priceSale", 0, ",", ".") ?>₫</span>
+                <a href="{{ route('product.detail' , ['slug' => $key->slug]) }}">
+                    <div class="product__all-list-item">
+                        <img class="" src=" {{ asset('client/image/'.$key->img) }}" alt="">
+                        <a href="" class="btn__view">Chọn mẫu</a>
+                        <span class="percent_sale">-20%</span>
+                        <span class="product__all-name"><a href="">{{$key->name}}</a></span>
+                        <div class="product__hot-list-infor-price">
+                            <bdo dir="ltr"><?= number_format("$key->price", 0, ",", "."); ?>₫</bdo>
+                            <span><?= number_format("$key->priceSale", 0, ",", ".") ?>₫</span>
+                        </div>
                     </div>
-                </div>
+                </a>
                 @endforeach
             </div>
             <ul class="page__paging-list">

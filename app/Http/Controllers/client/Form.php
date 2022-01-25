@@ -128,7 +128,7 @@ class Form extends Controller
         }
 
         $dataCustomer = customer::where('email', '=', $request->email)->get();
-       
+
         if (password_verify($request->password, $dataCustomer[0]->password)) {
             session()->put('user_info',  $dataCustomer[0]);
             return redirect()->route('home')->with('success', 'Đăng nhập thành công');
@@ -145,7 +145,7 @@ class Form extends Controller
     {
         session()->forget('user_info');
         session()->forget('login');
-        return redirect()->route('home')->with('success',  'Tài khoản đã đăng xuất !!!');
+        return redirect()->back()->with('success',  'Tài khoản đã đăng xuất !!!');
         die();
     }
 }

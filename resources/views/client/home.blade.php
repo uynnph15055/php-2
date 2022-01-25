@@ -89,16 +89,18 @@
                 <div class="product__all-list-bg">
                     <div class="product__all-list">
                         @foreach($productAll as $key)
-                        <div class="product__all-list-item">
-                            <img class="" style="margin-bottom: 10px;" src="{{ asset('upload/'.$key->img) }} " alt="">
-                            <a href="" class="btn__view">Chọn mẫu</a>
-                            <span class="percent_sale">-20%</span>
-                            <span class="product__all-name"><a href="">{{$key->name}}</a></span>
-                            <div class="product__hot-list-infor-price">
-                                <bdo dir="ltr"><?= number_format("$key->price", 0, ",", "."); ?>₫</bdo>
-                                <span><?= number_format("$key->priceSale", 0, ",", ".") ?>₫</span>
+                        <a href="{{ route('product.detail' , ['slug' => $key->slug]) }}">
+                            <div class="product__all-list-item">
+                                <img class="" style="margin-bottom: 10px;" src="{{ asset('upload/'.$key->img) }} " alt="">
+                                <a href="" class="btn__view">Chọn mẫu</a>
+                                <span class="percent_sale">-20%</span>
+                                <span class="product__all-name"><a href="">{{$key->name}}</a></span>
+                                <div class="product__hot-list-infor-price">
+                                    <bdo dir="ltr"><?= number_format("$key->price", 0, ",", "."); ?>₫</bdo>
+                                    <span><?= number_format("$key->priceSale", 0, ",", ".") ?>₫</span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                         @endforeach
                     </div>
                 </div>
@@ -112,90 +114,28 @@
             </div>
             <div class="slider__frame">
                 <div class="slider__assess">
+                    @foreach($assessCustomer as $key)
                     <div class="slider__content">
                         <div class="slider__content-bg">
                             <div class="slider__content-info">
-                                <img class="slider__content-img" src="{{ asset('client/image/unnamed.jpg') }} " alt="">
-                                <h3>Uy nguyễn</h3>
+                                <img class="slider__content-img" src="{{ asset('upload/'.$key->customer->img) }} " alt="">
+                                <h3>{{$key->customer->name}}</h3>
                             </div>
                             <div class="slider__content-text">
                                 <div class="slider__content-text-bg">
                                     <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
+                                        @for($i = 0 ; $i < $key->number_star ; $i ++)
+                                            <i class="fas fa-star"></i>
+                                            @endfor
                                     </div>
-                                    <p class="slider__content-p"> Lorem ipsum dolor sit amet consectetur
-                                        adipisicing
-                                        elit. Maxime laboriosam
-                                        iure
-                                        impedit ipsum quaerat laudantium dolore alias, eum recusandae esse
-                                        temporibus,
-                                        consectetur illo dicta saepe iste delectus, officiis repudiandae
-                                        debitis!
+                                    <p class="slider__content-p">
+                                        {{$key->content}}
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="slider__content">
-                        <div class="slider__content-bg">
-                            <div class="slider__content-info">
-                                <img class="slider__content-img" src="{{ asset('client/image/unnamed.jpg') }} " alt="">
-                                <h3>Uy nguyễn</h3>
-                            </div>
-                            <div class="slider__content-text">
-                                <div class="slider__content-text-bg">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p class="slider__content-p"> Lorem ipsum dolor sit amet consectetur
-                                        adipisicing
-                                        elit. Maxime laboriosam
-                                        iure
-                                        impedit ipsum quaerat laudantium dolore alias, eum recusandae esse
-                                        temporibus,
-                                        consectetur illo dicta saepe iste delectus, officiis repudiandae
-                                        debitis!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider__content">
-                        <div class="slider__content-bg">
-                            <div class="slider__content-info">
-                                <img class="slider__content-img" src="{{ asset('client/image/unnamed.jpg') }} " alt="">
-                                <h3>Uy nguyễn</h3>
-                            </div>
-                            <div class="slider__content-text">
-                                <div class="slider__content-text-bg">
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p class="slider__content-p"> Lorem ipsum dolor sit amet consectetur
-                                        adipisicing
-                                        elit. Maxime laboriosam
-                                        iure
-                                        impedit ipsum quaerat laudantium dolore alias, eum recusandae esse
-                                        temporibus,
-                                        consectetur illo dicta saepe iste delectus, officiis repudiandae
-                                        debitis!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -214,6 +154,5 @@
             })
         })
     });
-
 </script>
 @endsection

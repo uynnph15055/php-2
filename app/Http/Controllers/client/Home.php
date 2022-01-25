@@ -4,6 +4,7 @@ namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\judge;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,14 @@ class Home extends Controller
         $productLotOfView = Product::orderBy('number_views', 'desc')->skip(0)->take(6)->get();
         $productCate = Category::orderBy('id', 'desc')->skip(1)->take(5)->get();
         $productAll = Product::orderBy('id', 'desc')->skip(0)->take(20)->get();
+        $assessCustomer = judge::where('status', '=', 0)->skip(0)->take(3)->get();
+        // dd($assessCustomer);
 
         return view('client.home', [
             'productLotOfView' => $productLotOfView,
             'productCate' => $productCate,
             'productAll' => $productAll,
+            'assessCustomer' => $assessCustomer,
         ]);
     }
 

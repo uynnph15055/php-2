@@ -65,15 +65,17 @@
                         <br>
                     </p>
                     <span class="product__choose-size">Chọn size</span>
-                    <form action="">
+                    <form action="{{ route('addCart') }}" method="POST">
+                        @csrf
+                        <input type="text" class="input2" hidden value="{{$rowProduct->id}}" name="id">
                         <div class="product__size-radio">
                             @foreach($size as $key => $value)
-                            <input type="radio" class="input2" name="size" id="{{$value}}">
+                            <input type="radio" class="input2" value="{{$value}}" name="size" id="{{$value}}">
                             <label class="label2" for="{{$value}}">{{$value}}</label>
                             @endforeach
                         </div>
                         <div class="product__input-number">
-                            <input value="1" class="input-number" type="number">
+                            <input value="1" class="input-number" name="quantity" type="number">
                         </div>
                         <button class="btn-add-cart">Thêm vào giỏ hàng</button>
                     </form>
@@ -116,7 +118,6 @@
                             <span>{{session('user_info')->email}}</span>
                         </div>
                     </div>
-                    @endif
                     <div class="stars">
                         <form action="{{ route('product.saveAssess') }}" method="POST">
                             @csrf
@@ -143,6 +144,14 @@
                         </form>
                     </div>
                 </div>
+                @else
+                <div class="warning-login">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>Bạn chưa đăng nhập tài khoản !!!</h3>
+                    <br>
+                    <a href="{{route('formRegister')}}">Đăng nhập</a>
+                </div>
+                @endif
             </div>
         </section>
         <section class="product__relate">

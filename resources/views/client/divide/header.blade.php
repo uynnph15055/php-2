@@ -30,11 +30,24 @@
                 <span class="header__body-phone-infor-number">0349 791 128</span>
             </div>
         </div>
-        <a href="" class="header__body-cart" style="text-decoration: none;">
-            <h5 class="header__body-cart-money">250.000 <span>đ</span></h5>
+
+        <a href="{{ route('cart') }}" class="header__body-cart" style="text-decoration: none;">
+            <?php
+            $sumMoney = 0;
+            $countCart = 0;
+            if (session()->exists('cart')) {
+                $cart = session('cart');
+
+                foreach ($cart as $key) {
+                    $sumMoney += $key['price'] * $key['number'];
+                }
+                $countCart = count($cart);
+            }
+            ?>
+            <h5 class="header__body-cart-money"><?= number_format("$sumMoney", 0, ",", ".") ?> <span>đ</span></h5>
             <i class="fas fa-shopping-cart"></i>
             <div class="count__cart">
-                1
+                {{$countCart}}
             </div>
         </a>
     </div>

@@ -1,6 +1,17 @@
 @extends('admin.layout.admin')
 @section('title' , 'Trang chính')
 @section('main_content')
+<style>
+    .count {
+        color: #000;
+        margin-top: 10px;
+    }
+
+    .icon-count {
+        color: #ccc;
+        font-size: 30px;
+    }
+</style>
 <div class="container">
     <div class="row">
         <div class="col-xl-3 col-md-6">
@@ -40,5 +51,32 @@
             </div>
         </div>
     </div>
+    <div id="piechart" style="width: 1050px; height: 500px;background-color: #ccc;"></div>
+
 </div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['cate_name', 'number_cate'],
+            <?php foreach ($chart as $key) {
+                echo "['" . $key->name . "', " . $key->number_cate . "],";
+            }  ?>
+        ]);
+
+        var options = {
+            title: 'Thống kê sản phẩm theo danh mục'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+</script>
 @endsection
