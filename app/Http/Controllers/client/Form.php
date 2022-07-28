@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin;
 use App\Models\customer;
 use Exception;
 use Illuminate\Http\Request;
@@ -35,6 +36,12 @@ class Form extends Controller
 
         $checkMail = customer::where('email', '=', $request->email)->get();
         if (!$checkMail) {
+            session()->put('error',  'Email này đã tồn tại !!!');
+            return redirect()->intended('dang-ky-dang-nhap');
+        }
+
+        $checkMailAdmin = admin::where('email', '=', $request->email)->get();
+        if (!$checkMailAdmin) {
             session()->put('error',  'Email này đã tồn tại !!!');
             return redirect()->intended('dang-ky-dang-nhap');
         }
@@ -128,15 +135,31 @@ class Form extends Controller
         }
 
         $dataCustomer = customer::where('email', '=', $request->email)->get();
+        // dd($dataCustomer);
+        if ($dataCustomer->count() > 0) {
+            if (password_verify($request->password, $dataCustomer[0]->password)) {
+                session()->put('user_info',  $dataCustomer[0]);
+                return redirect()->route('home')->with('success', 'Đăng nhập thành công');
+            } else {
+                session()->put('error',  'Kiểm tra lại tài khoản !!!');
+                session()->put('login', 'ok');
+                return redirect()->intended('dang-ky-dang-nhap');
+                die();
+            }
+        }
 
-        if (password_verify($request->password, $dataCustomer[0]->password)) {
-            session()->put('user_info',  $dataCustomer[0]);
-            return redirect()->route('home')->with('success', 'Đăng nhập thành công');
-            die();
-        } else {
-            session()->put('error',  'Kiểm tra lại tài khoản !!!');
-            return redirect()->intended('dang-ky-dang-nhap');
-            die();
+        $dataAdmin = admin::where('email', '=', $request->email)->get();
+        // dd($dataAdmin);
+        if ($dataAdmin->count() > 0) {
+            if (password_verify($request->password, $dataAdmin[0]->password)) {
+                session()->put('admin_info',  $dataAdmin[0]);
+                return redirect()->route('trang-chinh.index')->with('success', 'Đăng nhập thành công');
+            } else {
+                session()->put('error',  'Kiểm tra lại tài khoản !!!');
+                session()->put('login', 'ok');
+                return redirect()->intended('dang-ky-dang-nhap');
+                die();
+            }
         }
     }
 

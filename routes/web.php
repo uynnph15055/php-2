@@ -1,16 +1,22 @@
 <?php
 
 use App\Http\Controllers\admin\adminAssess;
+use App\Http\Controllers\admin\adminBill;
 use App\Http\Controllers\admin\adminCate;
+use App\Http\Controllers\admin\adminCustomer;
 use App\Http\Controllers\admin\adminMain;
+use App\Http\Controllers\admin\adminPost;
 use App\Http\Controllers\admin\adminProduct;
+use App\Http\Controllers\admin\adminStaff;
 use App\Http\Controllers\client\Cart;
 use App\Http\Controllers\client\Contact;
 use App\Http\Controllers\client\Form;
 use App\Http\Controllers\client\Home;
 use App\Http\Controllers\client\Introduce;
+use App\Http\Controllers\client\News;
 use App\Http\Controllers\client\Pay;
 use App\Http\Controllers\client\Product;
+use App\Models\admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +60,33 @@ Route::group(['prefix' => 'quan-tri'], function () {
         Route::post('/sua-danh-gia', [adminAssess::class, 'update'])->name('danh-gia.update');
         Route::get('/xoa/{id}', [adminAssess::class, 'destroy'])->name('danh-gia.delete');
     });
+
+    Route::group(['prefix' => '/khach-hang'], function () {
+        Route::get('/', [adminCustomer::class, 'index'])->name('khach-hang.index');
+        Route::get('/xoa/{id}', [adminCustomer::class, 'delete'])->name('khach-hang.delete');
+    });
+
+    Route::group(['prefix' => '/nhan-vien'], function () {
+        Route::get('/', [adminStaff::class, 'index'])->name('nhan-vien.index');
+        Route::post('/them', [adminStaff::class, 'create'])->name('nhan-vien.create');
+        Route::get('/xoa/{id}', [adminStaff::class, 'delete'])->name('nhan-vien.delete');
+    });
+
+    Route::group(['prefix' => '/hoa-don'], function () {
+        Route::get('/', [adminBill::class, 'index'])->name('hoa-don.index');
+        Route::get('/sua-trang-thai', [adminBill::class, 'changStatus'])->name('hoa-don.changeStatus');
+        Route::get('/chi-tiet/{id}', [adminBill::class, 'detail'])->name('hoa-don.detail');
+        Route::post('/update/{id}', [adminBill::class, 'update'])->name('hoa-don.update');
+    });
+
+    Route::group(['prefix' => '/tin-tuc'], function () {
+        Route::get('/', [adminPost::class, 'index'])->name('tin-tuc.index');
+        Route::get('/them', [adminPost::class, 'store'])->name('tin-tuc.store');
+        Route::post('/luu', [adminPost::class, 'create'])->name('tin-tuc.create');
+        Route::get('/xoa/{id}', [adminPost::class, 'delete'])->name('tin-tuc.delete');
+        Route::get('/sua/{id}', [adminPost::class, 'edit'])->name('tin-tuc.edit');
+        Route::post('/luu-sua', [adminPost::class, 'update'])->name('tin-tuc.update');
+    });
 });
 
 
@@ -70,6 +103,8 @@ Route::group(
             Route::get('/dang-ky-dang-nhap', [Form::class, 'index'])->name('formRegister');
             Route::post('/dang-nhap', [Form::class, 'login'])->name('login');
             Route::get('/dang-xuat', [Form::class, 'logOut'])->name('logOut');
+            Route::get('/tin-tuc', [News::class, 'index'])->name('new.index');
+            Route::get('/tin-tuc/{slug}', [News::class, 'newDetail'])->name('new.detail');
         });
 
         // Đăng ký

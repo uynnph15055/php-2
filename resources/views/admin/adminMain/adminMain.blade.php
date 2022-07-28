@@ -62,7 +62,6 @@
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
-
         var data = google.visualization.arrayToDataTable([
             ['cate_name', 'number_cate'],
             <?php foreach ($chart as $key) {

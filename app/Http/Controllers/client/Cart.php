@@ -71,8 +71,6 @@ class Cart extends Controller
             $cart = session('cart');
         }
 
-      
-
         // dd($cart);
         return view('client.cart', [
             'cart' => $cart,
@@ -81,5 +79,10 @@ class Cart extends Controller
 
     public function deleteCart($id)
     {
+        $cart = session('cart');
+        unset($cart[$id]);
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Đã xóa thành công');
     }
 }

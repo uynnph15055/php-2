@@ -10,6 +10,11 @@ class adminCate extends Controller
 {
     public function index()
     {
+        if (session()->exists('admin_info') == false) {
+            return redirect()->intended('dang-ky-dang-nhap');
+            die();
+        }
+
         // return '<h1>Uy</h1>';
         $dataLimit = Category::paginate(5);
         $dataAll = Category::all();

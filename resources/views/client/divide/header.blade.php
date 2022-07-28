@@ -30,6 +30,20 @@
                 <span class="header__body-phone-infor-number">0349 791 128</span>
             </div>
         </div>
+        @if(!empty(session()->exists('cart')))
+        <style>
+            .header__body-search {
+                margin-right: -10px;
+            }
+        </style>
+
+        @else
+        <style>
+            .header__body-search {
+                margin-right: 25px;
+            }
+        </style>
+        @endif
 
         <a href="{{ route('cart') }}" class="header__body-cart" style="text-decoration: none;">
             <?php
@@ -71,7 +85,7 @@
                 </ul>
             </li>
             <li class="header__main-list-item">
-                <a href="" class="header__main-list-link">Bài Viết</a>
+                <a href="{{ route('new.index') }}" class="header__main-list-link">Bài Viết</a>
             </li>
             <li class="header__main-list-item">
                 <a href="{{ route('contact') }}" class="header__main-list-link">Liên Hệ</a>

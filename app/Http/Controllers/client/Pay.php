@@ -62,5 +62,8 @@ class Pay extends Controller
                 $modelBillDetail->save();
             }
         }
+
+        session()->forget('cart');
+        return redirect()->route('home')->with('success', 'Bạn đã mua hàng thành công');
     }
 }

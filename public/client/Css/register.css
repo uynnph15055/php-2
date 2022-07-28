@@ -170,7 +170,7 @@ input[type='file'] {
     width: 400px;
     position: absolute;
     top: 18%;
-    display: none;
+  
     left: 35px;
     right: 30px;
     border-radius: 20px;

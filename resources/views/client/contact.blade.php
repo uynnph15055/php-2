@@ -1,6 +1,6 @@
-@extends('client.layout.client');
+@extends('client.layout.client')
 @section('title' , 'Liên hệ')
-@section('linkCss');
+@section('linkCss')
 <link rel="stylesheet" href="{{ asset('client/Css/contact.css') }}">
 @endsection
 @section('main_content')

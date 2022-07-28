@@ -12,6 +12,11 @@ class adminProduct extends Controller
 {
     public function index()
     {
+        if (session()->exists('admin_info') == false) {
+            return redirect()->intended('dang-ky-dang-nhap');
+            die();
+        }
+
         $products = Product::paginate(5);
 
         return view('admin.adminProduct.adminProduct', [

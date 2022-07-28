@@ -143,13 +143,7 @@
     });
 
 
-    $(document).ready(function() {
-        <?php
-        if (session()->exists('login')) { ?>
-            $('.wrap_form-bg').css('display', 'none');
-            $('.wrap_form-login').css('display', 'block');
-        <?php }  ?>
-    });
+ 
 </script>
 
 </html>

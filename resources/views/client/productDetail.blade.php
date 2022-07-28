@@ -89,7 +89,7 @@
                 <div class="tab">
                     <button id="defaultOpen" class="tablinks tablinks__sub" onclick="openCity(event, 'London')">Liên
                         quan</button>
-                    <button class="tablinks" onclick="openCity(event, 'Paris')">Bình luận</button>
+                    <button class="tablinks" onclick="openCity(event, 'Paris')">Đánh giá</button>
                 </div>
 
                 <div id="London" class="tabcontent">

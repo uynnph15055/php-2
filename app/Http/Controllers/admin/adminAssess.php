@@ -8,8 +8,20 @@ use Illuminate\Http\Request;
 
 class adminAssess extends Controller
 {
+    // public function __construct()
+    // {
+    //     if (session()->exists('admin_info') == false) {
+    //         return redirect()->intended('dang-ky-dang-nhap');
+    //         die();
+    //     }
+    // }
     public function index()
     {
+        if (session()->exists('admin_info') == false) {
+            return redirect()->intended('dang-ky-dang-nhap');
+            die();
+        }
+
         $dataAssess  = judge::paginate(5);
         // dd($dataAssess);
         return view('admin.adminAssess.listAssess', [

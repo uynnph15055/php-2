@@ -143,7 +143,7 @@
                 @foreach($productAll as $key)
                 <li class="product__relate-item">
                     <div class="product__relate-img-bg">
-                        <a href=""><img class="product__relate-img" src="{{ asset('client/image/'.$key->img) }}" alt=""></a>
+                        <a href="{{ route('product.detail' , ['slug' => $key->slug]) }}"><img class="product__relate-img" src="{{ asset('client/image/'.$key->img) }}" alt=""></a>
                     </div>
                     <div class="product__relate-infor-bg">
                         <span class="product__relate-name"><a class="product__relate-name-a" href="">{{$key->name}}</a></span>

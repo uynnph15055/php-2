@@ -14,6 +14,7 @@
                 <li class="page__present-item"><a class="primary-color" href="">Hoàn tất</a></li>
             </ul>
         </section>
+        @if(!empty($cart))
         <form action="">
             <section class="main__cart">
                 <div class="main__cart-info">
@@ -27,12 +28,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <tbody>
                             @foreach($cart as $key)
 
                             <tr>
                                 <td class="td-fast" style="margin-left: 0;">
-                                    <a href="{{ route('deleteCart', ['id' => $key['id']]) }}"><i class="far fa-trash-alt"></i></a>
+                                    <a onclick="return confirm('Bạn có muỗn xóa sản phẩm này ?')" href="{{ route('deleteCart', ['id' => $key['id']]) }}"><i class="far fa-trash-alt"></i></a>
                                     <img width="80px" class="product__hot-list-detail-img" src="{{ asset('upload/'.$key['img']) }}" alt="">
                                     <p class="nameProduct">
                                         {{$key['name']}}
@@ -61,10 +61,10 @@
                     </div>
                 </div>
                 <div class="receipt__cart">
-                    <?php $sum_money = 0;
+                   <?php $sum_money = 0;
                     foreach ($cart as $key) {
                         $sum_money += $key['number'] * $key['price'];
-                    }
+                    } 
                     ?>
                     <table>
                         <thead>
@@ -91,6 +91,24 @@
                 </div>
             </section>
         </form>
+        @else
+        <style>
+            .btn-cart-empty {
+                padding: 10px 25px;
+                background-color: #ff5622;
+                border: none;
+                color: #ffff;
+                font-size: 15px;
+                border-radius: 6px;
+            }
+        </style>
+        <div class="" style="text-align: center;">
+            <p style="font-size: 18px;">Hiện tại giỏ hàng của bạn đang trống !!!</p>
+            <br>
+            <br>
+            <a class="btn-cart-empty" href="{{ route('product') }}">Quay trở lại cửa hàng</a>
+        </div>
+        @endif
     </main>
 </div>
 @endsection
